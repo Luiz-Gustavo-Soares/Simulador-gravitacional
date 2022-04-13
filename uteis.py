@@ -23,8 +23,8 @@ def descobrir_angulo(posicao):
     a = math.degrees(r)
     return a
 
-def dividir_forca(forca, angulo):
-    fx = forca * math.cos(math.radians(angulo))
-    fy = forca * math.sin(math.radians(angulo))
+def dividir_forca(forca, a, b):
+    fx = forca * (a[0]-b[0])/distancia_plano(a, b)
+    fy = forca * (a[1]-b[1])/distancia_plano(a, b)
     return fx, fy
     
