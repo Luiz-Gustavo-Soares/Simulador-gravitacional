@@ -14,7 +14,12 @@ class Bola:
         self.aceleração_x = 0
         self.aceleração_y = 0
 
-        
+    def parar_corpo(self):
+        self.aceleração_x = 0
+        self.aceleração_y = 0
+        self.velocidade_x = 0
+        self.velocidade_y = 0
+
     def calc_posicao(self):
         self.velocidade_x += self.aceleração_x
         self.velocidade_y += self.aceleração_y

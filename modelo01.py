@@ -33,8 +33,7 @@ while True:
 
 
     if colisao_circulo(b, terra):
-        b.aceleração_x = b.aceleração_y = 0
-        b.velocidade_x = b.velocidade_y = 0
+        b.parar_corpo()
     
     else:
         forca_g = calc_forca_gravitacional(b, terra)
@@ -43,7 +42,7 @@ while True:
         b.aceleração_x = fx/b.massa * -1
         b.aceleração_y = fy/b.massa * -1
 
-    informacoes = (f'Força G = {forca_g:.4f}', f'Fx = {fx:.4f}', f'Fy = {fy:.4f}', f'Aceleração X = {b.aceleração_x:.4f}', f'Aceleraçao Y = {b.aceleração_y:.4f}', f'Velocidade x = {b.velocidade_x:.4f}', f'Velocidade y = {b.velocidade_y:.4f}', f'Posição x/y = {b.posicao[0]:.4f}, {b.posicao[1]:.4f}')
+    informacoes = (f'Força G = {forca_g:.4f}', f'Aceleração X = {b.aceleração_x:.4f}', f'Aceleraçao Y = {b.aceleração_y:.4f}', f'Velocidade x = {b.velocidade_x:.4f}', f'Velocidade y = {b.velocidade_y:.4f}', f'Posição x/y = {b.posicao[0]:.4f}, {b.posicao[1]:.4f}')
     escrever_info(informacoes, tela, LARGURA-180)
 
     b.desenhar(tela)
