@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 
 from corpos import Bola
+from calculos import *
 from uteis import *
 
 pygame.init()
@@ -9,11 +10,6 @@ pygame.init()
 ALTURA = 600
 LARGURA = 1000
 tela = pygame.display.set_mode((LARGURA, ALTURA))
-
-
-pygame.font.init()
-fonte_padrao = pygame.font.get_default_font()
-fonte_info = pygame.font.SysFont(fonte_padrao, 18)
 
 
 b = Bola((50, 50), 6)
@@ -39,7 +35,6 @@ while True:
     if colisao_circulo(b, terra):
         b.aceleração_x = b.aceleração_y = 0
         b.velocidade_x = b.velocidade_y = 0
-        pass
     
     else:
         forca_g = calc_forca_gravitacional(b, terra)
@@ -49,10 +44,7 @@ while True:
         b.aceleração_y = fy/b.massa * -1
 
     informacoes = (f'Força G = {forca_g:.4f}', f'Fx = {fx:.4f}', f'Fy = {fy:.4f}', f'Aceleração X = {b.aceleração_x:.4f}', f'Aceleraçao Y = {b.aceleração_y:.4f}', f'Velocidade x = {b.velocidade_x:.4f}', f'Velocidade y = {b.velocidade_y:.4f}', f'Posição x/y = {b.posicao[0]:.4f}, {b.posicao[1]:.4f}')
-
-    for i in range(len(informacoes)):
-        text = fonte_info.render(informacoes[i], 1, (255,255,255))
-        tela.blit(text, ((LARGURA-180, i*14)))
+    escrever_info(informacoes, tela, LARGURA-180)
 
     b.desenhar(tela)
     terra.desenhar(tela)
