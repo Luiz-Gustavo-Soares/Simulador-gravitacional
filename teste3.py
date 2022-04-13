@@ -9,7 +9,7 @@ pygame.init()
 ALTURA = LARGURA = 600
 tela = pygame.display.set_mode((ALTURA, LARGURA))
 
-b = Bola((50, 50), 10)
+b = Bola((50, 50), 8)
 terra = Bola((300, 300), 50, (0,0,255), 1000000)
 
 
@@ -39,6 +39,22 @@ while True:
         
         b.aceleração_x = fx/b.massa
         b.aceleração_y = fy/b.massa 
+
+        informaçoes = f'''
+        Força G = {forca_g}
+            Fx = {fx}
+            Fy = {fy}
+        Angulo = {angulo}
+
+        Aceleração x = {b.aceleração_x}
+        Aceleração y = {b.aceleração_y}
+
+        Velocidade x = {b.velocidade_x}
+        Velocidade y = {b.velocidade_y}
+
+        Posição = {b.posicao}
+        '''
+        print(informaçoes)
 
 
     b.desenhar(tela)

@@ -21,12 +21,10 @@ def calc_forca_gravitacional(a, b):
 def descobrir_angulo(posicao):
     r = math.atan2(posicao[0], posicao[1])
     a = math.degrees(r)
-    print(f'Angulo = {a}')
     return a
 
 def dividir_forca(forca, angulo):
     fx = forca * math.cos(math.radians(angulo))
     fy = forca * math.sin(math.radians(angulo))
-    print(f'Força = {forca} \n Fx = {fx} \n Fy = {fy}')
     return fx, fy
     
