@@ -10,6 +10,12 @@ ALTURA = 600
 LARGURA = 1000
 tela = pygame.display.set_mode((LARGURA, ALTURA))
 
+
+pygame.font.init()
+fonte_padrao = pygame.font.get_default_font()
+fonte_info = pygame.font.SysFont(fonte_padrao, 18)
+
+
 b = Bola((50, 50), 6)
 terra = Bola((LARGURA/2, ALTURA/2), 50, (0,0,255), 1000000)
 
@@ -42,21 +48,11 @@ while True:
         b.aceleração_x = fx/b.massa * -1
         b.aceleração_y = fy/b.massa * -1
 
-        informaçoes = f'''
-        Força G = {forca_g}
-            Fx = {fx}
-            Fy = {fy}
+    informacoes = (f'Força G = {forca_g:.4f}', f'Fx = {fx:.4f}', f'Fy = {fy:.4f}', f'Aceleração X = {b.aceleração_x:.4f}', f'Aceleraçao Y = {b.aceleração_y:.4f}', f'Velocidade x = {b.velocidade_x:.4f}', f'Velocidade y = {b.velocidade_y:.4f}', f'Posição x/y = {b.posicao[0]:.4f}, {b.posicao[1]:.4f}')
 
-        Aceleração x = {b.aceleração_x}
-        Aceleração y = {b.aceleração_y}
-
-        Velocidade x = {b.velocidade_x}
-        Velocidade y = {b.velocidade_y}
-
-        Posição = {b.posicao}
-        '''
-        print(informaçoes)
-
+    for i in range(len(informacoes)):
+        text = fonte_info.render(informacoes[i], 1, (255,255,255))
+        tela.blit(text, ((LARGURA-180, i*14)))
 
     b.desenhar(tela)
     terra.desenhar(tela)
