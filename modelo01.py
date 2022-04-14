@@ -9,6 +9,7 @@ pygame.init()
 
 ALTURA = 600
 LARGURA = 1000
+pygame.display.set_caption("Simulação Gravitacional - 01")
 tela = pygame.display.set_mode((LARGURA, ALTURA))
 
 
