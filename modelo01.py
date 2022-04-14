@@ -42,8 +42,8 @@ while True:
         b.aceleração_x = fx/b.massa * -1
         b.aceleração_y = fy/b.massa * -1
 
-    informacoes = (f'Força G = {forca_g:.4f}', f'Aceleração X = {b.aceleração_x:.4f}', f'Aceleraçao Y = {b.aceleração_y:.4f}', f'Velocidade x = {b.velocidade_x:.4f}', f'Velocidade y = {b.velocidade_y:.4f}', f'Posição x/y = {b.posicao[0]:.4f}, {b.posicao[1]:.4f}')
-    escrever_info(informacoes, tela, LARGURA-180)
+    informacoes = (f'Força G = {forca_g:.4f}', f'Aceleração X = {b.aceleração_x:.4f}', f'Aceleraçao Y = {b.aceleração_y:.4f}', f'Velocidade x = {b.velocidade_x:.4f}', f'Velocidade y = {b.velocidade_y:.4f}', f'Posição x/y = {b.posicao[0]:.2f}, {b.posicao[1]:.2f}')
+    escrever_info(informacoes, tela, LARGURA)
 
     b.desenhar(tela)
     terra.desenhar(tela)

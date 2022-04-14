@@ -15,10 +15,12 @@ tela = pygame.display.set_mode((LARGURA, ALTURA))
 bolas = []
 terra = Bola((LARGURA/2, ALTURA/2), 50, (0,0,255), 1000000)
 
-velocidade_inicial =  5
+velocidade_inicial_x = 0
+velocidade_inicial_y = 0
 
 clock = pygame.time.Clock()
 mouse_destravado = True
+criar_varias = False
 
 while True:
     clock.tick(100)
@@ -37,18 +39,34 @@ while True:
                 pygame.quit()
                 quit()
             
-            elif evento.key == K_PAGEUP:
-                velocidade_inicial += 0.5
+            elif evento.key == K_UP:
+                velocidade_inicial_y += 0.25
 
-            elif evento.key == K_PAGEDOWN:
-                velocidade_inicial -= 0.5
+            elif evento.key == K_DOWN:
+                velocidade_inicial_y -= 0.25
+           
+            elif evento.key == K_RIGHT:
+                velocidade_inicial_x += 0.25    
+
+            elif evento.key == K_LEFT:
+                velocidade_inicial_x -= 0.25
+            
+            elif evento.key == K_t:
+                if criar_varias:
+                    criar_varias = False
+                else:
+                    criar_varias = True
+
+                
 
     if pygame.mouse.get_pressed()[0] and mouse_destravado:
         bolas.append(Bola(pygame.mouse.get_pos(), 6))
-        bolas[-1].velocidade_x = velocidade_inicial
+        bolas[-1].velocidade_x = velocidade_inicial_x
+        bolas[-1].velocidade_y = velocidade_inicial_y
 
-        mouse_destravado = False
-    elif not pygame.mouse.get_pressed()[0]:
+        if not criar_varias:
+            mouse_destravado = False
+    elif not pygame.mouse.get_pressed()[0] and not criar_varias:
         mouse_destravado = True
 
 
@@ -68,7 +86,7 @@ while True:
 
     terra.desenhar(tela)
 
-    informacoes = (f"Velocidade Inicial = {velocidade_inicial}", f"Quantidade de esferas = {len(bolas)}")
-    escrever_info(informacoes, tela, LARGURA-150)
+    informacoes = (f"Velocidade Inicial X = {velocidade_inicial_x}", f"Velocidade Inicial Y = {velocidade_inicial_y}", f"Criar varias esferas: {criar_varias}", f"Quantidade de esferas = {len(bolas)}")
+    escrever_info(informacoes, tela, LARGURA)
 
     pygame.display.update()
