@@ -48,12 +48,10 @@ class Planeta(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = self.posicao
 
-
     def calc_posicao(self):
         self.velocidade_x += self.aceleração_x
         self.velocidade_y += self.aceleração_y
         self.posicao = (self.posicao[0] + self.velocidade_x, self.posicao[1] + self.velocidade_y)
-
 
     def parar_corpo(self):
         self.aceleração_x = 0
