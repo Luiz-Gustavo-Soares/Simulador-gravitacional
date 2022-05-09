@@ -15,20 +15,24 @@ tela = pygame.display.set_mode((LARGURA, ALTURA))
 
 todas_as_sprites = pygame.sprite.Group() 
 
-terra = Planeta(posicao=(LARGURA/2, ALTURA/2), raio=50, sprite='./img/terra.png', massa=1000000)
-satelite = Planeta(posicao=(60, 60), raio=20, sprite='./img/satelite.png')
+terra = Planeta(posicao=(LARGURA/2, ALTURA/2), raio=50, sprite='./img/corpos/terra.png', massa=1000000)
+satelite = Planeta(posicao=(60, 60), raio=20, sprite='./img/corpos/satelite.png', massa=100)
 todas_as_sprites.add(terra)
 todas_as_sprites.add(satelite)
 
+fundo = pygame.image.load('./img/fundos/01.jpg')
+fundo = pygame.transform.scale(fundo, (LARGURA, ALTURA))
 
-lancar_c_mouse = False
+lancar_c_mouse = True
 parar_corpo = False
+mostrar_informacoes = True
 velocidade_inicial = [0, 0]
 
 clock = pygame.time.Clock()
 while True:
     clock.tick(60)
     tela.fill((0,0,0))
+    tela.blit(fundo, (0, 0))
 
     for evento in pygame.event.get():
         if evento.type == QUIT:
@@ -41,6 +45,9 @@ while True:
 
             elif evento.key == K_l:
                 lancar_c_mouse = False if lancar_c_mouse else True
+
+            elif evento.key == K_i:
+                mostrar_informacoes = False if mostrar_informacoes else True
             
             elif evento.key == K_LEFT:
                 velocidade_inicial[0] -= 0.5
@@ -81,7 +88,7 @@ while True:
         satelite.aceleração_x = fx/satelite.massa * -1
         satelite.aceleração_y = fy/satelite.massa * -1
 
-
+    print(forca_g)
     informacoes = ('***SATELITE***',
      f'Velocidade X/Y: ({satelite.velocidade_x:.3f} {satelite.velocidade_y:.3f})',
      f'Aceleração X/Y: ({satelite.aceleração_x:.3f} {satelite.aceleração_y:.3f})', 
@@ -89,12 +96,13 @@ while True:
      f'Raio: {satelite.raio}',
      f'Massa: {satelite.massa}', 
      '',
-     '***Configurações***',
+     '***CONFIGURAÇÕES***',
      f'Velocidade Inicial X/Y: {velocidade_inicial}',
      f'Lançar c/ o mouse: {lancar_c_mouse}',
      f'Corpo parado: {parar_corpo}' )
     
-    escrever_info(informacoes=informacoes, tela=tela, largura_tela=LARGURA)
+    if mostrar_informacoes:
+        escrever_info(informacoes=informacoes, tela=tela, largura_tela=LARGURA)
 
     todas_as_sprites.draw(tela)
     todas_as_sprites.update()
