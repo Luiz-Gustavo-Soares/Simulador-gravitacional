@@ -90,4 +90,4 @@ while True:
     informacoes = (f"Velocidade Inicial X = {velocidade_inicial_x}", f"Velocidade Inicial Y = {velocidade_inicial_y}", f"Criar varias esferas: {criar_varias}", f"Quantidade de esferas = {len(bolas)}")
     escrever_info(informacoes, tela, LARGURA)
 
-    pygame.display.update()
+    pygame.display.flip()

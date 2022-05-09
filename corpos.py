@@ -28,3 +28,15 @@ class Bola:
     def desenhar(self, tela):
         self.calc_posicao()
         pygame.draw.circle(tela, self.cor, self.posicao, self.raio)
+
+
+class Terra(pygame.sprite.Sprite):
+    def __init__(self, posicao, raio):
+        pygame.sprite.Sprite.__init__(self)
+        self.posicao = posicao
+        self.raio = raio
+
+        self.image = pygame.image.load('img/terra.png')
+        self.image = pygame.transform.scale(self.image, (950/5, 950/5))
+        self.rect = self.image.get_rect()
+        self.rect.center = self.posicao
