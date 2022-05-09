@@ -14,7 +14,7 @@ tela = pygame.display.set_mode((LARGURA, ALTURA))
 
 
 todas_as_sprites = pygame.sprite.Group() 
-terra = Terra(posicao=(LARGURA/2, ALTURA/2))
+terra = Terra(posicao=(LARGURA/2, ALTURA/2), raio=50)
 todas_as_sprites.add(terra)
 
 clock = pygame.time.Clock()
