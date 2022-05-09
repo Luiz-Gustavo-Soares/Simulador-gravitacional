@@ -1,9 +1,9 @@
 import pygame
 from pygame.locals import *
 
-from corpos import Bola
-from calculos import *
-from uteis import *
+from functions.corpos import Bola
+from functions.calculos import *
+from functions.uteis import *
 
 pygame.init()
 

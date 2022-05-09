@@ -1,10 +1,9 @@
-from curses import flash
 import pygame
 from pygame.locals import *
 
-from corpos import *
-from calculos import *
-from uteis import *
+from functions.corpos import *
+from functions.calculos import *
+from functions.uteis import *
 
 pygame.init()
 
@@ -30,7 +29,7 @@ velocidade_inicial = [0, 0]
 
 clock = pygame.time.Clock()
 while True:
-    clock.tick(60)
+    clock.tick(50)
     tela.fill((0,0,0))
     tela.blit(fundo, (0, 0))
 
