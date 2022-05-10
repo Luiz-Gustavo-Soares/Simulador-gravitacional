@@ -25,6 +25,12 @@ def colisao_circulo(circulo1=object, circulo2=object):
 
 
 def calc_forca_gravitacional(a, b):
+    '''
+    -> Calcula a força gravitacional entre dois pontos
+    :param a: objeto do primeiro corpo contendo a massa e a posição
+    :param b: objeto do primeiro corpo contendo a massa e a posição
+    :return: retorna a força gravitacional
+    '''
     G = 0.005   
     forca_g = (G * (a.massa * b.massa)) / (distancia_plano(a.posicao, b.posicao) ** 2)
     return forca_g
@@ -36,6 +42,13 @@ def descobrir_angulo(posicao):
     return a
 
 def dividir_forca(forca, a, b):
+    '''
+    -> Divide a força em dois eixos x/y.
+    :param forca: recebe a força a ser dividida.
+    :param a: recebe a posição do primeiro corpo.
+    :param b: recebe a posição do primeiro corpo.
+    :return: retorna o vetor forca para o eixo X e Y.
+    '''
     fx = forca * (a[0]-b[0])/distancia_plano(a, b)
     fy = forca * (a[1]-b[1])/distancia_plano(a, b)
     return fx, fy
