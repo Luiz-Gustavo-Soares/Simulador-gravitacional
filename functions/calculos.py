@@ -1,12 +1,24 @@
 import math
 
-def distancia_plano(a, b):
-    d = math.sqrt(((a[0] - b[0])**2) + ((a[1] - b[1])**2))
+def distancia_plano(ponto1, ponto2):
+    '''
+    -> Calcula a distancia de dois pontos no plano.
+    :param ponto1: resebem a posição (x, y) do primeiro ponto
+    :param ponto2: resebem a posição (x, y) do primeiro ponto
+    :return: distancia
+    '''
+    d = math.sqrt(((ponto1[0] - ponto2[0])**2) + ((ponto1[1] - ponto2[1])**2))
     return d
 
 
-def colisao_circulo(a, b):
-    if distancia_plano(a.posicao, b.posicao) < (a.raio + b.raio):
+def colisao_circulo(circulo1=object, circulo2=object):
+    '''
+    -> Calcula se dois circulos colidiram.
+    :param circulo1: objeto do primeiro circulo.
+    :param circulo2: objeto do segundo circulo.
+    :return: True se colidiram e False se não.
+    '''
+    if distancia_plano(circulo1.posicao, circulo2.posicao) < (circulo1.raio + circulo2.raio):
         return True
     else:
         return False

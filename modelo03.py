@@ -9,7 +9,8 @@ pygame.init()
 
 ALTURA = 600
 LARGURA = 1000
-pygame.display.set_caption("Simulação Gravitacional - 02")
+pygame.display.set_caption("Simulação Gravitacional - 03")
+pygame.display.set_icon(pygame.image.load('./img/icone.ico'))
 tela = pygame.display.set_mode((LARGURA, ALTURA))
 
 todas_as_sprites = pygame.sprite.Group() 
@@ -87,7 +88,6 @@ while True:
         satelite.aceleração_x = fx/satelite.massa * -1
         satelite.aceleração_y = fy/satelite.massa * -1
 
-    print(forca_g)
     informacoes = ('***SATELITE***',
      f'Velocidade X/Y: ({satelite.velocidade_x:.3f} {satelite.velocidade_y:.3f})',
      f'Aceleração X/Y: ({satelite.aceleração_x:.3f} {satelite.aceleração_y:.3f})', 
